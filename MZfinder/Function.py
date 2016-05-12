@@ -2,6 +2,31 @@ import string, os
 import matplotlib.pyplot as plt
 from Class import Species
 
+def test_for_number(stringtotest):
+
+    string_of_numchars = ''
+    for char in stringtotest:
+        if char.isdigit():
+            string_of_numchars = string_of_numchars + char
+       
+    if len(string_of_numchars) == 0:
+        return False
+    
+    else:
+        if int(string_of_numchars) > 100:
+            return True
+        else:
+            return False
+
+def number_only(numstring):
+    list_of_numchars = ''
+    for char in numstring:
+        if char.isdigit() or char == '.':
+            list_of_numchars = list_of_numchars + char
+
+    print list_of_numchars
+    return float(list_of_numchars)
+
 
 def read_input_file(filename, mz_file):
     
@@ -10,14 +35,15 @@ def read_input_file(filename, mz_file):
 
     all_species = []
     lines = important_nums_p.readlines()
+
     for line in lines:
-        if not line.replace('.','').strip('\n').isdigit():
+        if not test_for_number(line):
             if line != lines[0]:
                 all_species.append(species)
             species = Species(line.strip('\n'))
             
         else:
-            species.add_mz(line.strip('\n'))
+            species.add_mz(number_only(line))
         
     # Don't forget to add the last one!
     all_species.append(species)
