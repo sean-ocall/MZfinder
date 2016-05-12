@@ -1,0 +1,7 @@
+Takes exported text files from a Bruker MALDI Imaging Mass Spectrometry machine and finds selected Ions in each file.
+
+Usage: python Function.py from within the directory containing the input files. 
+
+Input: .txt files with tab deliminated m/z Intensity values (nothing else), new pair on each line
+
+Output: set of new files with the suffix: _output.csv
