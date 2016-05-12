@@ -31,7 +31,10 @@ def read_input_file(filename, mz_file):
 
     for line in lines:
         parts = line.split('\t')
-        mz_Int_dict[float(parts[0])] = float(parts[1].strip('\n'))
+        if len(parts) == 2:
+            mz_Int_dict[float(parts[0])] = float(parts[1].strip('\n'))
+        else:
+            pass
     
     #for key,value in mz_Int_dict.iteritems():
     #    if float(key) < 150:
